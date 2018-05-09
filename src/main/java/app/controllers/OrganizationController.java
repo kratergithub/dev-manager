@@ -52,9 +52,14 @@ public class OrganizationController {
 	}
 
 	@DeleteMapping("/organization/{id}")
-	public void deleteOrganization(@PathVariable(value = "id") int organizationId) {
+	public ResponseEntity<?> deleteOrganization(@PathVariable(value = "id") int organizationId) {
 
-		DeleteUtil.deleteOrganization(organizationId);
+		if (null != FindUtil.findOrganizationById(organizationId)) {
+			DeleteUtil.deleteOrganization(organizationId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 }

@@ -59,11 +59,16 @@ public class DeviceController {
 	}
 
 	@DeleteMapping("/organization/{orgId}/device/{devid}")
-	public void deleteDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
+	public ResponseEntity<?> deleteDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
 		// TODO
 		// check preconditions
 
-		DeleteUtil.deleteDevice(deviceId);
+		if (null != FindUtil.findDeviceById(deviceId, orgId)) {
+			DeleteUtil.deleteDevice(deviceId);
+			return new ResponseEntity<Device>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 }
