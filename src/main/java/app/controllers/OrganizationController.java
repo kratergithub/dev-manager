@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.exception.FieldMissingException;
 import app.model.Organization;
 import app.util.FindUtil;
 import app.util.SaveUtil;
@@ -24,7 +25,11 @@ public class OrganizationController {
 	@PostMapping("/organization")
 	public void createOrganization(@Valid @RequestBody Organization newOrganization) {
 
-		SaveUtil.saveOrganization(newOrganization);
+		if (null == newOrganization.getOrgName()) {
+			throw new FieldMissingException("Organization name missing");
+		} else {
+			SaveUtil.saveOrganization(newOrganization);
+		}
 
 	}
 

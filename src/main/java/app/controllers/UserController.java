@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.exception.FieldMissingException;
 import app.model.User;
 import app.util.DeleteUtil;
 import app.util.FindUtil;
@@ -25,7 +26,14 @@ public class UserController {
 	@PostMapping("/user")
 	public void createUser(@Valid @RequestBody User newUser) {
 
-		SaveUtil.saveUser(newUser);
+		if (null == newUser.getUsername()) {
+			throw new FieldMissingException("User name missing");
+		} else if (0 == newUser.getOrgId()) {
+			throw new FieldMissingException("Organization ID is missing");
+		} else {
+			SaveUtil.saveUser(newUser);
+		}
+
 	}
 
 	@GetMapping("/user/{id}")

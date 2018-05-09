@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.exception.FieldMissingException;
 import app.model.Device;
 import app.util.FindUtil;
 import app.util.SaveUtil;
@@ -24,13 +25,13 @@ public class DeviceController {
 	@PostMapping("/organization/{orgId}/device")
 	public void createDevice(@Valid @RequestBody Device newDevice, @PathVariable(value = "orgId") int orgId) {
 
-		// TODO
-		// check required fields
-		// check preconditions
-		// check if already exists
-		// add
-
-		SaveUtil.saveDevice(newDevice);
+		if (null == newDevice.getDeviceName()) {
+			throw new FieldMissingException("Device name missing");
+		} else if (0 == newDevice.getOwnerUserId()) {
+			throw new FieldMissingException("User ID is missing");
+		} else {
+			SaveUtil.saveDevice(newDevice);
+		}
 
 	}
 
