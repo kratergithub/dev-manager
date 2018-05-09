@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.exception.FieldMissingException;
 import app.model.Organization;
+import app.util.DeleteUtil;
 import app.util.FindUtil;
 import app.util.SaveUtil;
 
@@ -52,7 +53,8 @@ public class OrganizationController {
 
 	@DeleteMapping("/organization/{id}")
 	public void deleteOrganization(@PathVariable(value = "id") int organizationId) {
-		// TODO
+
+		DeleteUtil.deleteOrganization(organizationId);
 	}
 
 }

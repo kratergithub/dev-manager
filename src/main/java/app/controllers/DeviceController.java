@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.exception.FieldMissingException;
 import app.model.Device;
+import app.util.DeleteUtil;
 import app.util.FindUtil;
 import app.util.SaveUtil;
 
@@ -60,9 +61,9 @@ public class DeviceController {
 	@DeleteMapping("/organization/{orgId}/device/{devid}")
 	public void deleteDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
 		// TODO
-		// check if exists
 		// check preconditions
-		// delete
+
+		DeleteUtil.deleteDevice(deviceId);
 	}
 
 }

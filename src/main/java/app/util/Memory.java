@@ -119,7 +119,7 @@ public class Memory {
 
 		int i = 0;
 		for (User temp : this.users) {
-			if (temp.getOrgId() == userId) {
+			if (temp.getUserId() == userId) {
 				System.out.println("USER WITH ID " + userId + " FOUND");
 				this.users.remove(i);
 				System.out.println("USER WITH ID " + userId + " REMOVED");
@@ -151,6 +151,32 @@ public class Memory {
 		}
 
 		return foundDevice;
+	}
+	
+	public void memoryUpdateDevice(Device newDevice) {
+
+		System.out.println("MEMORY - memoryUpdateDevice");
+
+		// TODO
+		// this.users.add(newUser);
+
+	}
+
+	public void memoryDeleteDevice(int deviceId) {
+
+		System.out.println("MEMORY - memoryDeleteDevice");
+
+		int i = 0;
+		for (Device temp : this.devices) {
+			if (temp.getDeviceId() == deviceId) {
+				System.out.println("DEVICE WITH ID " + deviceId + " FOUND");
+				this.users.remove(i);
+				System.out.println("DEVICE WITH ID " + deviceId + " REMOVED");
+			} else {
+				System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
+			}
+			i++;
+		}
 	}
 
 }

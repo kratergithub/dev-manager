@@ -20,6 +20,13 @@ public final class DeleteUtil {
 		Memory.getInstance().memoryDeleteUser(userId);
 	}
 
+	public static void deleteDevice(int deviceId) {
+
+		System.out.println("DeleteUtil - deleteDevice");
+
+		Memory.getInstance().memoryDeleteDevice(deviceId);
+	}
+
 	public static boolean validateOrganizationDeletion(int orgId) {
 		boolean canDelete = true;
 
@@ -27,7 +34,6 @@ public final class DeleteUtil {
 		// check if org has users
 
 		return canDelete;
-
 	}
 
 }
