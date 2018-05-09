@@ -135,7 +135,7 @@ public class Memory {
 		this.devices.add(newDevice);
 	}
 	
-	public Device memoryGetDevice(int deviceId) {
+	public Device memoryGetDevice(int deviceId, int orgId) {
 
 		System.out.println("MEMORY - memoryGetDevice");
 

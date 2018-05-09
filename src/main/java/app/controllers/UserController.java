@@ -2,6 +2,8 @@ package app.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,11 +29,15 @@ public class UserController {
 	}
 
 	@GetMapping("/user/{id}")
-	public User getUserById(@PathVariable(value = "id") int userId) {
+	public ResponseEntity<User> getUser(@PathVariable(value = "id") int userId) {
 
-		return FindUtil.findUserById(userId);
-		// .orElseThrow(() -> new ResourceNotFoundException("Organization", "id",
-		// organizationId));
+		User foundUser = FindUtil.findUserById(userId);
+
+		if (null != foundUser)
+			return new ResponseEntity<User>(foundUser, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
 	@PutMapping("/user/{id}")

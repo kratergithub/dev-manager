@@ -2,6 +2,8 @@ package app.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,21 +29,25 @@ public class OrganizationController {
 	}
 
 	@GetMapping("/organization/{id}")
-	public Organization getOrganizationById(@PathVariable(value = "id") int organizationId) {
+	public ResponseEntity<Organization> getOrganizationById(@PathVariable(value = "id") int organizationId) {
 
-		return FindUtil.findOrganizationById(organizationId);
-				//.orElseThrow(() -> new ResourceNotFoundException("Organization", "id", organizationId));
+		Organization foundOrganization = FindUtil.findOrganizationById(organizationId);
+
+		if (null != foundOrganization)
+			return new ResponseEntity<Organization>(foundOrganization, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
-	
+
 	@PutMapping("/organization/{id}")
 	public void updateOrganization(@PathVariable(value = "id") int organizationId) {
-		//TODO
+		// TODO
 	}
-	
+
 	@DeleteMapping("/organization/{id}")
 	public void deleteOrganization(@PathVariable(value = "id") int organizationId) {
-		//TODO
+		// TODO
 	}
 
 }
