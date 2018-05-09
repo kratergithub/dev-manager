@@ -44,6 +44,7 @@ public class Memory {
 			if (temp.getOrgId() == organizationId) {
 				foundOrganization = temp;
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " FOUND");
+				break;
 			} else {
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 			}
@@ -55,7 +56,9 @@ public class Memory {
 
 	public void memoryUpdateOrganization(Organization newOrganization) {
 
-		//Organization foundOrganization = null;
+		System.out.println("MEMORY - memoryUpdateOrganization");
+
+		// Organization foundOrganization = null;
 		// TODO
 
 	}
@@ -70,6 +73,7 @@ public class Memory {
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " FOUND");
 				this.organizations.remove(i);
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " REMOVED");
+				break;
 			} else {
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 			}
@@ -96,6 +100,7 @@ public class Memory {
 			if (temp.getUserId() == userId) {
 				foundUser = temp;
 				System.out.println("USER WITH ID " + userId + " FOUND");
+				break;
 			} else {
 				System.out.println("USER WITH ID " + userId + " NOT FOUND");
 			}
@@ -123,6 +128,7 @@ public class Memory {
 				System.out.println("USER WITH ID " + userId + " FOUND");
 				this.users.remove(i);
 				System.out.println("USER WITH ID " + userId + " REMOVED");
+				break;
 			} else {
 				System.out.println("USER WITH ID " + userId + " NOT FOUND");
 			}
@@ -134,7 +140,7 @@ public class Memory {
 
 		this.devices.add(newDevice);
 	}
-	
+
 	public Device memoryGetDevice(int deviceId, int orgId) {
 
 		System.out.println("MEMORY - memoryGetDevice");
@@ -145,6 +151,7 @@ public class Memory {
 			if (temp.getDeviceId() == deviceId) {
 				foundDevice = temp;
 				System.out.println("DEVICE WITH ID " + deviceId + " FOUND");
+				break;
 			} else {
 				System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 			}
@@ -152,7 +159,7 @@ public class Memory {
 
 		return foundDevice;
 	}
-	
+
 	public void memoryUpdateDevice(Device newDevice) {
 
 		System.out.println("MEMORY - memoryUpdateDevice");
@@ -172,6 +179,7 @@ public class Memory {
 				System.out.println("DEVICE WITH ID " + deviceId + " FOUND");
 				this.users.remove(i);
 				System.out.println("DEVICE WITH ID " + deviceId + " REMOVED");
+				break;
 			} else {
 				System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 			}
