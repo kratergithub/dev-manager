@@ -9,8 +9,13 @@ import app.util.MemoryInitializer;
 public class App {
 
 	public static void main(String[] args) {
-		MemoryInitializer.initializeMemoryBasicData();
+		initializeMemory();
 		SpringApplication.run(App.class, args);
+	}
+	
+	public static void initializeMemory() {
+		System.out.println("initializeMemory...");
+		MemoryInitializer.initializeMemoryBasicData();
 	}
 
 }
