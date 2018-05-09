@@ -18,8 +18,8 @@ import app.util.FindUtil;
 @RequestMapping("/api")
 public class DeviceController {
 
-	@PostMapping("/device")
-	public void createDevice(@Valid @RequestBody Device newDevice) {
+	@PostMapping("/organization/{orgId}/device")
+	public void createDevice(@Valid @RequestBody Device newDevice, @PathVariable(value = "orgId") int orgId) {
 
 		// TODO
 		// check required fields
@@ -29,23 +29,23 @@ public class DeviceController {
 
 	}
 
-	@GetMapping("/device/{id}")
-	public Device getDevice(@PathVariable(value = "id") int deviceId) {
+	@GetMapping("/organization/{orgId}/device/{devId}")
+	public Device getDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
 
 		return FindUtil.findDeviceById(deviceId);
 
 	}
 
-	@PutMapping("/device/{id}")
-	public void updateDevice(@PathVariable(value = "id") int updatedDevice) {
+	@PutMapping("/organization/{orgId}/device/{devid}")
+	public void updateDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId, @Valid @RequestBody Device updatedDevice) {
 		// TODO
 		// check required fields
 		// check if exists
 		// update
 	}
 
-	@DeleteMapping("/device/{id}")
-	public void deleteDevice(@PathVariable(value = "id") int deviceId) {
+	@DeleteMapping("/organization/{orgId}/device/{devid}")
+	public void deleteDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
 		// TODO
 		// check if exists
 		// check preconditions
