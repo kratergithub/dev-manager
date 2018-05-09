@@ -37,7 +37,8 @@ public class DeviceController {
 	}
 
 	@PutMapping("/organization/{orgId}/device/{devid}")
-	public void updateDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId, @Valid @RequestBody Device updatedDevice) {
+	public void updateDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId,
+			@Valid @RequestBody Device updatedDevice) {
 		// TODO
 		// check required fields
 		// check if exists

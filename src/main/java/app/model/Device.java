@@ -5,7 +5,7 @@ public class Device {
 	private String deviceName;
 	private String deviceModel;
 	private String deviceType;
-	private String ownerUser;
+	private int ownerUserId;
 
 	public int getDeviceId() {
 		return deviceId;
@@ -39,12 +39,12 @@ public class Device {
 		this.deviceType = deviceType;
 	}
 
-	public String getOwnerUser() {
-		return ownerUser;
+	public int getOwnerUserId() {
+		return ownerUserId;
 	}
 
-	public void setOwnerUser(String ownerUser) {
-		this.ownerUser = ownerUser;
+	public void setOwnerUserId(int ownerUser) {
+		this.ownerUserId = ownerUser;
 	}
 
 }

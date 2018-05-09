@@ -2,7 +2,7 @@ package app.model;
 
 public class User {
 	private int userId;
-	private String user;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String role;
@@ -16,12 +16,12 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String user) {
+		this.username = user;
 	}
 
 	public String getFirstName() {

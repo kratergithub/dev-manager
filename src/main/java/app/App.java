@@ -1,11 +1,15 @@
 package app;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import app.util.MemoryInitializer;
 
 @SpringBootApplication
 public class App {
 
 	public static void main(String[] args) {
+		MemoryInitializer.initializeMemoryBasicData();
 		SpringApplication.run(App.class, args);
 	}
 
