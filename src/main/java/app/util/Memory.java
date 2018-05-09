@@ -40,14 +40,19 @@ public class Memory {
 
 		Organization foundOrganization = null;
 
+		boolean found = false;
+
 		for (Organization temp : this.organizations) {
 			if (temp.getOrgId() == organizationId) {
 				foundOrganization = temp;
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " FOUND");
+				found = true;
 				break;
-			} else {
-				System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 			}
+		}
+
+		if (!found) {
+			System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 		}
 
 		return foundOrganization;
@@ -67,6 +72,8 @@ public class Memory {
 
 		System.out.println("MEMORY - memoryDeleteOrganization");
 
+		boolean found = false;
+
 		int i = 0;
 		for (Organization temp : this.organizations) {
 			if (temp.getOrgId() == organizationId) {
@@ -74,10 +81,12 @@ public class Memory {
 				this.organizations.remove(i);
 				System.out.println("ORGANIZATION WITH ID " + organizationId + " REMOVED");
 				break;
-			} else {
-				System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 			}
 			i++;
+		}
+
+		if (!found) {
+			System.out.println("ORGANIZATION WITH ID " + organizationId + " NOT FOUND");
 		}
 
 	}
@@ -96,14 +105,19 @@ public class Memory {
 
 		User foundUser = null;
 
+		boolean found = false;
+
 		for (User temp : this.users) {
 			if (temp.getUserId() == userId) {
 				foundUser = temp;
 				System.out.println("USER WITH ID " + userId + " FOUND");
+				found = true;
 				break;
-			} else {
-				System.out.println("USER WITH ID " + userId + " NOT FOUND");
 			}
+		}
+
+		if (!found) {
+			System.out.println("USER WITH ID " + userId + " NOT FOUND");
 		}
 
 		return foundUser;
@@ -122,17 +136,22 @@ public class Memory {
 
 		System.out.println("MEMORY - memoryDeleteUser");
 
+		boolean found = false;
+
 		int i = 0;
 		for (User temp : this.users) {
 			if (temp.getUserId() == userId) {
 				System.out.println("USER WITH ID " + userId + " FOUND");
 				this.users.remove(i);
 				System.out.println("USER WITH ID " + userId + " REMOVED");
+				found = true;
 				break;
-			} else {
-				System.out.println("USER WITH ID " + userId + " NOT FOUND");
 			}
 			i++;
+		}
+
+		if (!found) {
+			System.out.println("USER WITH ID " + userId + " NOT FOUND");
 		}
 	}
 
@@ -147,14 +166,19 @@ public class Memory {
 
 		Device foundDevice = null;
 
+		boolean found = false;
+
 		for (Device temp : this.devices) {
 			if (temp.getDeviceId() == deviceId) {
 				foundDevice = temp;
 				System.out.println("DEVICE WITH ID " + deviceId + " FOUND");
+				found = true;
 				break;
-			} else {
-				System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 			}
+		}
+
+		if (!found) {
+			System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 		}
 
 		return foundDevice;
@@ -173,17 +197,22 @@ public class Memory {
 
 		System.out.println("MEMORY - memoryDeleteDevice");
 
+		boolean found = false;
+
 		int i = 0;
 		for (Device temp : this.devices) {
 			if (temp.getDeviceId() == deviceId) {
 				System.out.println("DEVICE WITH ID " + deviceId + " FOUND");
 				this.users.remove(i);
 				System.out.println("DEVICE WITH ID " + deviceId + " REMOVED");
+				found = true;
 				break;
-			} else {
-				System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 			}
 			i++;
+		}
+
+		if (!found) {
+			System.out.println("DEVICE WITH ID " + deviceId + " NOT FOUND");
 		}
 	}
 
