@@ -2,6 +2,8 @@ package app.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,9 +32,15 @@ public class DeviceController {
 	}
 
 	@GetMapping("/organization/{orgId}/device/{devId}")
-	public Device getDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
+	public ResponseEntity<Device> getDevice(@PathVariable(value = "devId") int deviceId,
+			@PathVariable(value = "orgId") int orgId) {
 
-		return FindUtil.findDeviceById(deviceId, orgId);
+		Device foundDev = FindUtil.findDeviceById(deviceId, orgId);
+
+		if (null != foundDev)
+			return new ResponseEntity<Device>(foundDev, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 	}
 
