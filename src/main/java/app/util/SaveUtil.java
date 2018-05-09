@@ -1,5 +1,6 @@
 package app.util;
 
+import app.model.Device;
 import app.model.Organization;
 import app.model.User;
 
@@ -26,7 +27,7 @@ public final class SaveUtil {
 		}
 
 	}
-	
+
 	public static void updateOrganization(Organization updatedOrganization) {
 
 		System.out.println("SaveUtil - updateOrganization");
@@ -36,8 +37,8 @@ public final class SaveUtil {
 		if (orgId != 0) {
 			if (null != FindUtil.findOrganizationById(orgId)) {
 				System.out.println("Updating organization with ID " + orgId);
-				//TODO
-				//Memory.getInstance().memoryAddOrganization(newOrganization);
+				// TODO
+				// Memory.getInstance().memoryAddOrganization(newOrganization);
 			} else {
 				System.out.println("ERROR: organization with ID " + orgId + " does not exist");
 			}
@@ -65,6 +66,28 @@ public final class SaveUtil {
 
 		} else {
 			System.out.println("ERROR: can't create user");
+		}
+
+	}
+
+	public static void saveDevice(Device newDevice) {
+
+		System.out.println("SaveUtil - saveDevice");
+
+		int newDeviceId = newDevice.getDeviceId();
+		// int newDeviceOwnerId = newDevice.getOwnerUserId();
+
+		if (newDeviceId != 0 && (null != FindUtil.findDeviceById(newDeviceId, 0))) {
+
+			if (null == FindUtil.findDeviceById(newDeviceId, 0)) {
+				System.out.println("Adding device with ID " + newDeviceId);
+				Memory.getInstance().memoryAddDevice(newDevice);
+			} else {
+				System.out.println("ERROR: device with ID " + newDeviceId + " already exists");
+			}
+
+		} else {
+			System.out.println("ERROR: can't create device");
 		}
 
 	}

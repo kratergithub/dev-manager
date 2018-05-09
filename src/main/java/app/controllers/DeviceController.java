@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.model.Device;
 import app.util.FindUtil;
+import app.util.SaveUtil;
 
 @RestController
 @RequestMapping("/api")
@@ -28,6 +29,8 @@ public class DeviceController {
 		// check preconditions
 		// check if already exists
 		// add
+
+		SaveUtil.saveDevice(newDevice);
 
 	}
 
