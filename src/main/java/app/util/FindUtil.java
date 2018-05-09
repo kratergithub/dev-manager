@@ -26,11 +26,11 @@ public final class FindUtil {
 
 	}
 	
-	public static Device findDeviceById(int deviceId) {
+	public static Device findDeviceById(int deviceId, int orgId) {
 
 		System.out.println("FindUtil - findDeviceById");
 
-		return Memory.getInstance().memoryGetDevice(deviceId);
+		return Memory.getInstance().memoryGetDevice(deviceId, orgId);
 
 	}
 

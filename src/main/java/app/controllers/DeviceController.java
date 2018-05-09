@@ -32,7 +32,7 @@ public class DeviceController {
 	@GetMapping("/organization/{orgId}/device/{devId}")
 	public Device getDevice(@PathVariable(value = "devId") int deviceId, @PathVariable(value = "orgId") int orgId) {
 
-		return FindUtil.findDeviceById(deviceId);
+		return FindUtil.findDeviceById(deviceId, orgId);
 
 	}
 
